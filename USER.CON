@@ -1,0 +1,72 @@
+/*
+--------------------------------------------------------------------------------
+This Extreme PaintBrawl .CON file 
+(c) 1998 Creative Carnage, LLC by Carlos Cuello
+.CON file system developed by Todd Replogle, 3dRealms Entertainment.
+--------------------------------------------------------------------------------
+
+IMPORTANT NOTICE:
+	In order for a multiplayer game to work, all parties must have exactly the
+same .CON files.  Modify at your own risk.
+
+--------------------------------------------------------------------------------
+*/
+// ******************
+// MISC GAME SETTINGS
+// ******************
+
+
+define MAXPLAYERHEALTH          100
+define MAXWATERFOUNTAINHEALTH   50
+define GENERICIMPACTDAMAGE      10
+define SWEARFREQUENCY           42
+define RESPAWNACTORTIME         768
+define RESPAWNITEMTIME          768
+define RUNNINGSPEED             53200
+
+
+
+// Enemy strengths (hit points).
+define PB_PLAYERSTRENGTH            35
+define PB_PLAYERBITESTRENGTH        -9
+
+
+// Miscellaneous strengths.
+define WEAKEST           1
+define WEAK              5
+define MEDIUMSTRENGTH    10
+define TOUGH             20
+define REALLYTOUGH       30
+define HBOMBTOUGH       100
+define GOTTASMART        90
+define BOMBTOUGH        100
+
+
+/*
+--------------------------------------------------------------------------------
+ABOUT CHANGING SOUND FX
+The sound fx section follows this explanation.  
+
+1. The program expects to find any sound file that is in a
+   .VOC or .WAV file format.
+2. You can either change the VOC name listed below to match your new
+   sound, or you can rename your file to match the name here.
+3. New sound files should be added to the game directory.  Though
+   all sound files shipped with the game are included inside the 
+   .GRP file, the program will know if there are sound files outside
+   the .GRP file, and will use them instead.
+4. The numbers that are to the right of the sound file name are technical
+   parameters which will not be explained here, except as follows...
+   - The first 2 numbers define a random pitch variation range.  They
+     can be positive or negative numbers.
+   - The 3rd number is a priority flag.
+   - The 4th number is a bit parsed set of technical variables that identify
+     the type of sound it is in the game.
+   - The 5th number is volume adjustment.
+--------------------------------------------------------------------------------
+*/
+
+definesound PB_SHOOT           Shot.voc       -32   0     4   0    100
+definesound PB_RELOAD          Reload.voc       -32   0     4   0  100
+definesound PB_SPLAT           Splat.voc       -32   0     4   0   100
+definesound PB_STEPS           Reload.voc       -32   0     4   0  100
