@@ -1,0 +1,720 @@
+/*
+--------------------------------------------------------------------------------
+This Extreme PaintBrawl .CON file 
+(c) 1998 Creative Carnage, LLC by Carlos Cuello
+.CON file system developed by Todd Replogle, 3dRealms Entertainment.
+--------------------------------------------------------------------------------
+
+IMPORTANT NOTICE:
+        In order for a multiplayer game to work, all parties must have exactly the
+same .CON files.  Modify at your own risk.
+
+--------------------------------------------------------------------------------
+*/
+include DEFS.CON
+include USER.CON
+
+action PB_PLAYERCRUZING    -5  4 5 1 15
+action PB_PLAYERATACK      -2  4 5 1 25
+action PB_PLAYERRETREAT   -40  4 5 1 24
+action PB_PLAYERDEFENSE    -1  4 5 1 50
+action PB_PLAYERCROUCHING  -60 4 5 1 30
+action PB_PLAYERFLEEING    5   4 5 1 24
+action PB_CHICKRETREAT    2266 4 5 1 24
+
+move PB_PLAYERVELS 34
+move PB_PLAYERFASTVELS 52
+move PB_PLAYERFLEEVELS 50
+
+ai FINDFLAG        PB_PLAYERCRUZING PB_PLAYERFLEEVELS dodgebullet fleeenemy
+ai ATTACKOPPONENT  PB_PLAYERATACK PB_PLAYERVELS randomangle geth
+ai CROUCHING       PB_PLAYERCROUCHING PB_PLAYERVELS dodgebullet fleeenemy
+ai RUNAWAY         PB_PLAYERFLEEING PB_PLAYERFLEEVELS dodgebullet fleeenemy
+
+actor FRIENDLYGUY 2000 PB_PLAYERCRUZING PB_PLAYERVELS seekplayer geth getv
+    ifaction PB_PLAYERRETREAT
+    {
+        ifcount 32 
+          ifnotmoving
+            move -PB_PLAYERFASTVELS randomangle getv 
+    }
+    else ifaction PB_PLAYERCRUZING
+    {
+        fall
+        ifcount 32 ifnotmoving
+        { ifrnd 128 move PB_PLAYERVELS seekplayer getv 
+           else move PB_PLAYERFASTVELS seekplayer getv }
+        ifbulletnear 
+        {  ifrnd 128  ai CROUCHING
+           else  ifrnd 250 ai ATTACKOPPONENT 
+        }
+    }
+    else ifaction PB_PLAYERCROUCHING
+    {
+        fall
+        ifcount 32 ifnotmoving
+        { ifrnd 128 move PB_PLAYERVELS fleeenemy getv
+          else move PB_PLAYERFASTVELS fleeenemy getv }
+        ifcount 256 
+           ifrnd 128 action PB_PLAYERCRUZING  
+    }
+   else ifaction PB_PLAYERATACK
+    {     
+	ifcount 26 
+	{ shoot BLUESHOT resetcount }
+    }
+
+    ifhitweapon
+    {
+        ifdead
+            { action PB_PLAYERRETREAT }
+        else
+         ifwasweapon REDSHOT
+          {
+            action PB_PLAYERRETREAT     
+          }
+    }
+enda
+
+
+actor FRIENDLYTEAM5 2000 PB_PLAYERCRUZING PB_PLAYERVELS seekplayer geth getv
+    ifaction PB_PLAYERRETREAT
+    {
+        ifcount 32 
+          ifnotmoving
+            move -PB_PLAYERFASTVELS randomangle getv 
+    }
+    else ifaction PB_PLAYERCRUZING
+    {
+        fall
+        ifcount 32 ifnotmoving
+        { ifrnd 128 move PB_PLAYERVELS seekplayer getv 
+           else move PB_PLAYERFASTVELS seekplayer getv }
+        ifbulletnear 
+        {  ifrnd 128  ai CROUCHING
+           else  ifrnd 250 ai ATTACKOPPONENT 
+        }
+    }
+    else ifaction PB_PLAYERCROUCHING
+    {
+        fall
+        ifcount 32 ifnotmoving
+        { ifrnd 128 move PB_PLAYERVELS fleeenemy getv
+          else move PB_PLAYERFASTVELS fleeenemy getv }
+        ifcount 256 
+           ifrnd 128 action PB_PLAYERCRUZING  
+    }
+   else ifaction PB_PLAYERATACK
+    {     
+	ifcount 26 
+	{ shoot BLUESHOT resetcount }
+    }
+
+    ifhitweapon
+    {
+        ifdead
+            { action PB_PLAYERRETREAT }
+        else
+         ifwasweapon REDSHOT
+          {
+            action PB_PLAYERRETREAT     
+          }
+    }
+enda
+
+
+actor FRIENDLYTEAM4 2000 PB_PLAYERCRUZING PB_PLAYERVELS seekplayer geth getv
+    ifaction PB_PLAYERRETREAT
+    {
+        ifcount 32 
+          ifnotmoving
+            move -PB_PLAYERFASTVELS randomangle getv 
+    }
+    else ifaction PB_PLAYERCRUZING
+    {
+        fall
+        ifcount 32 ifnotmoving
+        { ifrnd 128 move PB_PLAYERVELS seekplayer getv 
+           else move PB_PLAYERFASTVELS seekplayer getv }
+        ifbulletnear 
+        {  ifrnd 128  ai CROUCHING
+           else  ifrnd 250 ai ATTACKOPPONENT 
+        }
+    }
+    else ifaction PB_PLAYERCROUCHING
+    {
+        fall
+        ifcount 32 ifnotmoving
+        { ifrnd 128 move PB_PLAYERVELS fleeenemy getv
+          else move PB_PLAYERFASTVELS fleeenemy getv }
+        ifcount 256 
+           ifrnd 128 action PB_PLAYERCRUZING  
+    }
+   else ifaction PB_PLAYERATACK
+    {     
+	ifcount 26 
+	{ shoot BLUESHOT resetcount }
+    }
+
+    ifhitweapon
+    {
+        ifdead
+            { action PB_PLAYERRETREAT }
+        else
+         ifwasweapon REDSHOT
+          {
+            action PB_PLAYERRETREAT     
+          }
+    }
+enda
+actor FRIENDLYTEAM7 2000 PB_PLAYERCRUZING PB_PLAYERVELS seekplayer geth getv
+    ifaction PB_PLAYERRETREAT
+    {
+        ifcount 32 
+          ifnotmoving
+            move -PB_PLAYERFASTVELS randomangle getv 
+    }
+    else ifaction PB_PLAYERCRUZING
+    {
+        fall
+        ifcount 32 ifnotmoving
+        { ifrnd 128 move PB_PLAYERVELS seekplayer getv 
+           else move PB_PLAYERFASTVELS seekplayer getv }
+        ifbulletnear 
+        {  ifrnd 128  ai CROUCHING
+           else  ifrnd 250 ai ATTACKOPPONENT 
+        }
+    }
+    else ifaction PB_PLAYERCROUCHING
+    {
+        fall
+        ifcount 32 ifnotmoving
+        { ifrnd 128 move PB_PLAYERVELS fleeenemy getv
+          else move PB_PLAYERFASTVELS fleeenemy getv }
+        ifcount 256 
+           ifrnd 128 action PB_PLAYERCRUZING  
+    }
+   else ifaction PB_PLAYERATACK
+    {     
+	ifcount 26 
+	{ shoot BLUESHOT resetcount }
+    }
+
+    ifhitweapon
+    {
+        ifdead
+            { action PB_PLAYERRETREAT }
+        else
+         ifwasweapon REDSHOT
+          {
+            action PB_PLAYERRETREAT     
+          }
+    }
+enda
+actor FRIENDLYTEAM3 2000 PB_PLAYERCRUZING PB_PLAYERVELS seekplayer geth getv
+    ifaction PB_PLAYERRETREAT
+    {
+        ifcount 32 
+          ifnotmoving
+            move -PB_PLAYERFASTVELS randomangle getv 
+    }
+    else ifaction PB_PLAYERCRUZING
+    {
+        fall
+        ifcount 32 ifnotmoving
+        { ifrnd 128 move PB_PLAYERVELS seekplayer getv 
+           else move PB_PLAYERFASTVELS seekplayer getv }
+        ifbulletnear 
+        {  ifrnd 128  ai CROUCHING
+           else  ifrnd 250 ai ATTACKOPPONENT 
+        }
+    }
+    else ifaction PB_PLAYERCROUCHING
+    {
+        fall
+        ifcount 32 ifnotmoving
+        { ifrnd 128 move PB_PLAYERVELS fleeenemy getv
+          else move PB_PLAYERFASTVELS fleeenemy getv }
+        ifcount 256 
+           ifrnd 128 action PB_PLAYERCRUZING  
+    }
+   else ifaction PB_PLAYERATACK
+    {     
+	ifcount 26 
+	{ shoot BLUESHOT resetcount }
+    }
+
+    ifhitweapon
+    {
+        ifdead
+            { action PB_PLAYERRETREAT }
+        else
+         ifwasweapon REDSHOT
+          {
+            action PB_PLAYERRETREAT     
+          }
+    }
+enda
+actor FRIENDLYTEAM2 2000 PB_PLAYERCRUZING PB_PLAYERVELS seekplayer geth getv
+    ifaction PB_PLAYERRETREAT
+    {
+        ifcount 32 
+          ifnotmoving
+            move -PB_PLAYERFASTVELS randomangle getv 
+    }
+    else ifaction PB_PLAYERCRUZING
+    {
+        fall
+        ifcount 32 ifnotmoving
+        { ifrnd 128 move PB_PLAYERVELS seekplayer getv 
+           else move PB_PLAYERFASTVELS seekplayer getv }
+        ifbulletnear 
+        {  ifrnd 128  ai CROUCHING
+           else  ifrnd 250 ai ATTACKOPPONENT 
+        }
+    }
+    else ifaction PB_PLAYERCROUCHING
+    {
+        fall
+        ifcount 32 ifnotmoving
+        { ifrnd 128 move PB_PLAYERVELS fleeenemy getv
+          else move PB_PLAYERFASTVELS fleeenemy getv }
+        ifcount 256 
+           ifrnd 128 action PB_PLAYERCRUZING  
+    }
+   else ifaction PB_PLAYERATACK
+    {     
+	ifcount 26 
+	{ shoot BLUESHOT resetcount }
+    }
+
+    ifhitweapon
+    {
+        ifdead
+            { action PB_PLAYERRETREAT }
+        else
+         ifwasweapon REDSHOT
+          {
+            action PB_PLAYERRETREAT     
+          }
+    }
+enda
+
+action PB_OTHERCRUZING    -3 4 5 1 34
+action PB_OTHERATACK      17 4 5 1 15
+action PB_OTHERRETREAT   -38 4 5 1 24
+
+move PB_OTHERVELS 14
+move PB_OTHERFASTVELS 52
+move PB_OTHERFLEEVELS 50
+
+actor OPPOSINGTEAM 2000 PB_OTHERCRUZING PB_OTHERVELS seekplayer geth
+
+    ifaction PB_OTHERRETREAT
+    {
+        ifcount 32 ifnotmoving
+         move PB_OTHERFASTVELS fleeenemy
+        ifcount 256
+         killit
+    }
+    else ifaction PB_OTHERCRUZING
+    {
+        ifcansee ifcount 48 { action PB_OTHERATACK move PB_OTHERFASTVELS seekplayer faceplayersmart getv break }
+        ifcount 32 ifnotmoving
+        {
+            ifrnd 128 move PB_OTHERVELS seekplayer faceplayer geth
+            else move PB_OTHERFASTVELS seekplayer geth
+        }
+    }
+    else ifaction PB_OTHERATACK
+    {
+        ifcount 26
+        {
+          shoot REDSHOT
+          resetcount
+        }   
+
+        ifcount 4
+        {
+            ifpdistl 1280
+            {
+//                ifp palive ifcansee
+//                {
+//                    sound DUKE_GRUNT
+//                    palfrom 32 32
+//                    addphealth PB_PLAYERBITESTRENGTH
+//                }
+                move PB_OTHERFLEEVELS faceplayer
+            }
+        }
+        else ifnotmoving
+            { ifcount 32 { action PB_OTHERCRUZING move PB_OTHERVELS randomangle geth } }
+        else ifcount 48 ifrnd 2
+            { action PB_OTHERCRUZING move PB_OTHERFASTVELS randomangle geth }
+    }
+
+    ifhitweapon
+    {
+        ifdead
+            { action PB_OTHERRETREAT }
+        else
+        {
+            ifwasweapon BLUESHOT
+               action PB_OTHERRETREAT
+            else move PB_OTHERVELS randomangle geth
+        }
+    }
+enda
+
+
+actor OPPOSINGTEAM2 2000 PB_OTHERCRUZING PB_OTHERVELS seekplayer geth
+
+    ifaction PB_OTHERRETREAT
+    {
+        ifcount 32 ifnotmoving
+         move PB_OTHERFASTVELS fleeenemy
+        ifcount 256
+         killit
+    }
+    else ifaction PB_OTHERCRUZING
+    {
+        ifcansee ifcount 48 { action PB_OTHERATACK move PB_OTHERFASTVELS seekplayer faceplayersmart getv break }
+        ifcount 32 ifnotmoving
+        {
+            ifrnd 128 move PB_OTHERVELS seekplayer faceplayer geth
+            else move PB_OTHERFASTVELS seekplayer geth
+        }
+    }
+    else ifaction PB_OTHERATACK
+    {
+        ifcount 26
+        {
+          shoot REDSHOT
+          resetcount
+        }   
+
+        ifcount 4
+        {
+            ifpdistl 1280
+            {
+//                ifp palive ifcansee
+//                {
+//                    sound DUKE_GRUNT
+//                    palfrom 32 32
+//                    addphealth PB_PLAYERBITESTRENGTH
+//                }
+                move PB_OTHERFLEEVELS faceplayer
+            }
+        }
+        else ifnotmoving
+            { ifcount 32 { action PB_OTHERCRUZING move PB_OTHERVELS randomangle geth } }
+        else ifcount 48 ifrnd 2
+            { action PB_OTHERCRUZING move PB_OTHERFASTVELS randomangle geth }
+    }
+
+    ifhitweapon
+    {
+        ifdead
+            { action PB_OTHERRETREAT }
+        else
+        {
+            ifwasweapon BLUESHOT
+               action PB_OTHERRETREAT
+            else move PB_OTHERVELS randomangle geth
+        }
+    }
+enda
+
+
+actor OPPOSINGTEAM3 2000 PB_OTHERCRUZING PB_OTHERVELS seekplayer geth
+
+    ifaction PB_OTHERRETREAT
+    {
+        ifcount 32 ifnotmoving
+         move PB_OTHERFASTVELS fleeenemy
+        ifcount 256
+         killit
+    }
+    else ifaction PB_OTHERCRUZING
+    {
+        ifcansee ifcount 48 { action PB_OTHERATACK move PB_OTHERFASTVELS seekplayer faceplayersmart getv break }
+        ifcount 32 ifnotmoving
+        {
+            ifrnd 128 move PB_OTHERVELS seekplayer faceplayer geth
+            else move PB_OTHERFASTVELS seekplayer geth
+        }
+    }
+    else ifaction PB_OTHERATACK
+    {
+        ifcount 26
+        {
+          shoot REDSHOT
+          resetcount
+        }   
+
+        ifcount 4
+        {
+            ifpdistl 1280
+            {
+//                ifp palive ifcansee
+//                {
+//                    sound DUKE_GRUNT
+//                    palfrom 32 32
+//                    addphealth PB_PLAYERBITESTRENGTH
+//                }
+                move PB_OTHERFLEEVELS faceplayer
+            }
+        }
+        else ifnotmoving
+            { ifcount 32 { action PB_OTHERCRUZING move PB_OTHERVELS randomangle geth } }
+        else ifcount 48 ifrnd 2
+            { action PB_OTHERCRUZING move PB_OTHERFASTVELS randomangle geth }
+    }
+
+    ifhitweapon
+    {
+        ifdead
+            { action PB_OTHERRETREAT }
+        else
+        {
+            ifwasweapon BLUESHOT
+               action PB_OTHERRETREAT
+            else move PB_OTHERVELS randomangle geth
+        }
+    }
+enda
+
+actor OPPOSINGTEAM4 2000 PB_OTHERCRUZING PB_OTHERVELS seekplayer geth
+
+    ifaction PB_OTHERRETREAT
+    {
+        ifcount 32 ifnotmoving
+         move PB_OTHERFASTVELS fleeenemy
+        ifcount 256
+         killit
+    }
+    else ifaction PB_OTHERCRUZING
+    {
+        ifcansee ifcount 48 { action PB_OTHERATACK move PB_OTHERFASTVELS seekplayer faceplayersmart getv break }
+        ifcount 32 ifnotmoving
+        {
+            ifrnd 128 move PB_OTHERVELS seekplayer faceplayer geth
+            else move PB_OTHERFASTVELS seekplayer geth
+        }
+    }
+    else ifaction PB_OTHERATACK
+    {
+        ifcount 26
+        {
+          shoot REDSHOT
+          resetcount
+        }   
+
+        ifcount 4
+        {
+            ifpdistl 1280
+            {
+//                ifp palive ifcansee
+//                {
+//                    sound DUKE_GRUNT
+//                    palfrom 32 32
+//                    addphealth PB_PLAYERBITESTRENGTH
+//                }
+                move PB_OTHERFLEEVELS faceplayer
+            }
+        }
+        else ifnotmoving
+            { ifcount 32 { action PB_OTHERCRUZING move PB_OTHERVELS randomangle geth } }
+        else ifcount 48 ifrnd 2
+            { action PB_OTHERCRUZING move PB_OTHERFASTVELS randomangle geth }
+    }
+
+    ifhitweapon
+    {
+        ifdead
+            { action PB_OTHERRETREAT }
+        else
+        {
+            ifwasweapon BLUESHOT
+               action PB_OTHERRETREAT
+            else move PB_OTHERVELS randomangle geth
+        }
+    }
+enda
+
+
+actor OPPOSINGTEAM5 2000 PB_OTHERCRUZING PB_OTHERVELS seekplayer geth
+
+    ifaction PB_OTHERRETREAT
+    {
+        ifcount 32 ifnotmoving
+         move PB_OTHERFASTVELS fleeenemy
+        ifcount 256
+         killit
+    }
+    else ifaction PB_OTHERCRUZING
+    {
+        ifcansee ifcount 48 { action PB_OTHERATACK move PB_OTHERFASTVELS seekplayer faceplayersmart getv break }
+        ifcount 32 ifnotmoving
+        {
+            ifrnd 128 move PB_OTHERVELS seekplayer faceplayer geth
+            else move PB_OTHERFASTVELS seekplayer geth
+        }
+    }
+    else ifaction PB_OTHERATACK
+    {
+        ifcount 26
+        {
+          shoot REDSHOT
+          resetcount
+        }   
+
+        ifcount 4
+        {
+            ifpdistl 1280
+            {
+//                ifp palive ifcansee
+//                {
+//                    sound DUKE_GRUNT
+//                    palfrom 32 32
+//                    addphealth PB_PLAYERBITESTRENGTH
+//                }
+                move PB_OTHERFLEEVELS faceplayer
+            }
+        }
+        else ifnotmoving
+            { ifcount 32 { action PB_OTHERCRUZING move PB_OTHERVELS randomangle geth } }
+        else ifcount 48 ifrnd 2
+            { action PB_OTHERCRUZING move PB_OTHERFASTVELS randomangle geth }
+    }
+
+    ifhitweapon
+    {
+        ifdead
+            { action PB_OTHERRETREAT }
+        else
+        {
+            ifwasweapon BLUESHOT
+               action PB_OTHERRETREAT
+            else move PB_OTHERVELS randomangle geth
+        }
+    }
+enda
+
+
+actor OPPOSINGTEAM6 2000 PB_OTHERCRUZING PB_OTHERVELS seekplayer geth
+
+    ifaction PB_OTHERRETREAT
+    {
+        ifcount 32 ifnotmoving
+         move PB_OTHERFASTVELS fleeenemy
+        ifcount 256
+         killit
+    }
+    else ifaction PB_OTHERCRUZING
+    {
+        ifcansee ifcount 48 { action PB_OTHERATACK move PB_OTHERFASTVELS seekplayer faceplayersmart getv break }
+        ifcount 32 ifnotmoving
+        {
+            ifrnd 128 move PB_OTHERVELS seekplayer faceplayer geth
+            else move PB_OTHERFASTVELS seekplayer geth
+        }
+    }
+    else ifaction PB_OTHERATACK
+    {
+        ifcount 26
+        {
+          shoot REDSHOT
+          resetcount
+        }   
+
+        ifcount 4
+        {
+            ifpdistl 1280
+            {
+//                ifp palive ifcansee
+//                {
+//                    sound DUKE_GRUNT
+//                    palfrom 32 32
+//                    addphealth PB_PLAYERBITESTRENGTH
+//                }
+                move PB_OTHERFLEEVELS faceplayer
+            }
+        }
+        else ifnotmoving
+            { ifcount 32 { action PB_OTHERCRUZING move PB_OTHERVELS randomangle geth } }
+        else ifcount 48 ifrnd 2
+            { action PB_OTHERCRUZING move PB_OTHERFASTVELS randomangle geth }
+    }
+
+    ifhitweapon
+    {
+        ifdead
+            { action PB_OTHERRETREAT }
+        else
+        {
+            ifwasweapon BLUESHOT
+               action PB_OTHERRETREAT
+            else move PB_OTHERVELS randomangle geth
+        }
+    }
+enda
+
+
+actor OPPOSINGTEAM7 2000 PB_OTHERCRUZING PB_OTHERVELS seekplayer geth
+
+    ifaction PB_OTHERRETREAT
+    {
+        ifcount 32 ifnotmoving
+         move PB_OTHERFASTVELS fleeenemy
+        ifcount 256
+         killit
+    }
+    else ifaction PB_OTHERCRUZING
+    {
+        ifcansee ifcount 48 { action PB_OTHERATACK move PB_OTHERFASTVELS seekplayer faceplayersmart getv break }
+        ifcount 32 ifnotmoving
+        {
+            ifrnd 128 move PB_OTHERVELS seekplayer faceplayer geth
+            else move PB_OTHERFASTVELS seekplayer geth
+        }
+    }
+    else ifaction PB_OTHERATACK
+    {
+        ifcount 26
+        {
+          shoot REDSHOT
+          resetcount
+        }   
+
+        ifcount 4
+        {
+            ifpdistl 1280
+            {
+//                ifp palive ifcansee
+//                {
+//                    sound DUKE_GRUNT
+//                    palfrom 32 32
+//                    addphealth PB_PLAYERBITESTRENGTH
+//                }
+                move PB_OTHERFLEEVELS faceplayer
+            }
+        }
+        else ifnotmoving
+            { ifcount 32 { action PB_OTHERCRUZING move PB_OTHERVELS randomangle geth } }
+        else ifcount 48 ifrnd 2
+            { action PB_OTHERCRUZING move PB_OTHERFASTVELS randomangle geth }
+    }
+
+    ifhitweapon
+    {
+        ifdead
+            { action PB_OTHERRETREAT }
+        else
+        {
+            ifwasweapon BLUESHOT
+               action PB_OTHERRETREAT
+            else move PB_OTHERVELS randomangle geth
+        }
+    }
+enda
